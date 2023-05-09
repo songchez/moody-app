@@ -10,6 +10,7 @@ import {
   TextInput,
   View,
 } from "react-native";
+import Cusbutton from "./components/cusbutton";
 
 export default function App() {
   const [number, onChangeNumber] = useState("");
@@ -31,6 +32,8 @@ export default function App() {
         title="Press me"
         onPress={() => Alert.alert("버튼을 눌렀습니다.")}
       />
+      <Cusbutton />
+
       <TextInput
         style={styles.input}
         onChangeText={onChangeNumber}
