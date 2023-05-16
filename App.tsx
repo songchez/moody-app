@@ -3,60 +3,56 @@ import React, { useState } from "react";
 import {
   ActivityIndicator,
   Alert,
-  Button,
-  StyleSheet,
   Switch,
-  Text,
   TextInput,
   View,
 } from "react-native";
-import Cusbutton from "./components/cusbutton";
+import {
+  NativeBaseProvider,
+  Box,
+  extendTheme,
+  Button,
+  Text,
+  Heading,
+} from "native-base";
+import Home from "./components/home";
 
 export default function App() {
-  const [number, onChangeNumber] = useState("");
-  const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
-
+  const theme = extendTheme({
+    colors: {
+      // Add new color
+      primary: {
+        50: "#E3F2F9",
+        100: "#C5E4F3",
+        200: "#A2D4EC",
+        300: "#7AC1E4",
+        400: "#47A9DA",
+        500: "#0088CC",
+        600: "#007AB8",
+        700: "#006BA1",
+        800: "#005885",
+        900: "#003F5E",
+      },
+      // Redefining only one shade, rest of the color will remain same.
+      amber: {
+        400: "#d97706",
+      },
+    },
+    config: {
+      // Changing initialColorMode to 'dark'
+      initialColorMode: "dark",
+    },
+  });
   return (
-    <View style={styles.container}>
-      <Text>안녕하세요</Text>
-      <ActivityIndicator size="large" />
-      <Switch
-        trackColor={{ false: "#767577", true: "#81b0ff" }}
-        thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
-        ios_backgroundColor="#3e3e3e"
-        onValueChange={toggleSwitch}
-        value={isEnabled}
-      />
-      <Button
-        title="Press me"
-        onPress={() => Alert.alert("버튼을 눌렀습니다.")}
-      />
-      <Cusbutton />
-
-      <TextInput
-        style={styles.input}
-        onChangeText={onChangeNumber}
-        value={number}
-        placeholder="아무거나 입력"
-        keyboardType="numeric"
-      />
-      <StatusBar style="auto" />
-    </View>
+    <NativeBaseProvider theme={theme}>
+      <View>
+        <Heading>
+          <Text color="white" fontSize="xl">
+            무드아일랜드
+          </Text>
+        </Heading>
+        <Home />
+      </View>
+    </NativeBaseProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-  },
-});

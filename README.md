@@ -1,2 +1,3 @@
-# moody-app
+# Moody-app
+
 moodislands app
