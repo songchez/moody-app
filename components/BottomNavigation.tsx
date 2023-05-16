@@ -1,13 +1,6 @@
-import {
-  Box,
-  Center,
-  HStack,
-  Icon,
-  NativeBaseProvider,
-  Pressable,
-  Text,
-} from "native-base";
+import { Box, Center, HStack, Icon, Pressable, Text } from "native-base";
 import { useState } from "react";
+import { FontAwesome } from "@expo/vector-icons";
 
 export default function BottomNavigation() {
   const [selected, setSelected] = useState(1);
@@ -28,7 +21,7 @@ export default function BottomNavigation() {
           onPress={() => setSelected(0)}
         >
           <Center>
-            <Icon mb="1" color="white" size="sm" />
+            <Icon mb="1" as={FontAwesome} name="home" color="white" size="sm" />
             <Text color="white" fontSize="12">
               Home
             </Text>
@@ -41,7 +34,7 @@ export default function BottomNavigation() {
           onPress={() => setSelected(1)}
         >
           <Center>
-            <Icon mb="1" color="white" size="sm" />
+            <Icon mb="1" as={FontAwesome} name="home" color="white" size="sm" />
             <Text color="white" fontSize="12">
               Search
             </Text>
@@ -54,22 +47,9 @@ export default function BottomNavigation() {
           onPress={() => setSelected(2)}
         >
           <Center>
-            <Icon mb="1" color="white" size="sm" />
+            <Icon mb="1" as={FontAwesome} name="home" color="white" size="sm" />
             <Text color="white" fontSize="12">
               Cart
-            </Text>
-          </Center>
-        </Pressable>
-        <Pressable
-          opacity={selected === 3 ? 1 : 0.5}
-          py="2"
-          flex={1}
-          onPress={() => setSelected(3)}
-        >
-          <Center>
-            <Icon mb="1" color="white" size="sm" />
-            <Text color="white" fontSize="12">
-              Account
             </Text>
           </Center>
         </Pressable>
